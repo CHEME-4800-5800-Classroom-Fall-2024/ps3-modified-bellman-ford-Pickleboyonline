@@ -65,7 +65,9 @@ function readnodecapacityfile(filepath::String; comment::Char='#',
     # initialize
     capacities = Dict{Int64,Tuple{Int64,Int64}}()
     
-    # TODO: implement this function
+    # TODO: Should read onents from the given files.
+    # TODO: Returns dictionary where the key is the node ID,
+    # TODO: and value is a tuble of the in and out degree capacities
     throw("The readnodecapacityfile function is not implemented yet.");
 
     # return -
