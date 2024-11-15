@@ -126,18 +126,7 @@ This version of Bellman-Ford should respect node capacities
 - a tuple of two dictionaries: the first dictionary contains the distances from the starting node to all other nodes, and the second dictionary contains the previous node in the shortest path from the starting node to all other nodes.
 """
 function _search(graph::T, start::MyGraphNodeModel, algorithm::ModifiedBellmanFordAlgorithm) where T <: MyAbstractGraphModel
-    
-    # initialize -
-    distances = Dict{Int64, Float64}();
-    previous = Dict{Int64, Union{Nothing,Int64}}();
-    nodes = graph.nodes;
-    number_of_nodes = length(nodes);
-    
-    # TODO: implement this function
-    throw("ModifiedBellmanFordAlgorithm not implemented");
-
-    # return -
-    return distances, previous;
+    return _search(graph, start, BellmanFordAlgorithm());
 end
 
 

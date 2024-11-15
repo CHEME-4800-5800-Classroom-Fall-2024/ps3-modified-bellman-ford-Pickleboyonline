@@ -61,12 +61,28 @@ The function reads a file containing node capacity information and returns a dic
 """
 function readnodecapacityfile(filepath::String; comment::Char='#', 
     delim::Char=',')::Dict{Int64, Tuple{Int64, Int64}}
-
     # initialize
     capacities = Dict{Int64,Tuple{Int64,Int64}}()
     
-    # TODO: implement this function
-    throw("The readnodecapacityfile function is not implemented yet.");
+    open(filepath, "r") do file # open a stream to the file
+        for line ∈ eachline(file) # process each line in a file, one at a time
+            
+            # check: do we have comments?
+            if (contains(line, comment) == true) || (isempty(line) == true)
+                continue; # skip this line, and move to the next one
+            end
+            
+            # split the line around the delimiter -
+            parts = split(line, delim) .|> String
+
+            convert_to_int = (x) -> parse(Int64, x);
+
+            int_parts = map(convert_to_int, parts[1:3]);
+
+            # build the capacity model -
+            capacities[int_parts[1]] = (int_parts[2], int_parts[3]);       
+        end
+    end
 
     # return -
     return capacities;
