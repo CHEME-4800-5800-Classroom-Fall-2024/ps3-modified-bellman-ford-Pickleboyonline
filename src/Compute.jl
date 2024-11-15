@@ -93,6 +93,9 @@ function flow(graph::T, distances::Dict{Int64, Float64},
     nodes = range(2, stop=number_of_nodes) |> collect |> reverse;
     for node ∈ nodes
         p = previous[node]; # this is a connection
+        if p === nothing
+            continue;
+        end
         i = inversedgemap[(p, node)]; # this is the edge id
         flow[i] = 1.0;
     end

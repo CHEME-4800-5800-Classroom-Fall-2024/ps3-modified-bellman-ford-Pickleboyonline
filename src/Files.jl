@@ -62,7 +62,7 @@ The function reads a file containing node capacity information and returns a dic
 function readnodecapacityfile(filepath::String; comment::Char='#', 
     delim::Char=',')::Dict{Int64, Tuple{Int64, Int64}}
     # initialize
-    capacities = Dict{Int64,Tuple{Int64,Int64, Int64}}()
+    capacities = Dict{Int64,Tuple{Int64,Int64}}()
     
     open(filepath, "r") do file # open a stream to the file
         for line ∈ eachline(file) # process each line in a file, one at a time
